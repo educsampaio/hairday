@@ -3,9 +3,11 @@ import { CalendarBlankIcon, CaretDownIcon } from '@phosphor-icons/react'
 import { format } from 'date-fns'
 import { Text } from './text'
 
-type DatePickerProps = React.ComponentProps<'input'>
+interface DatePickerProps extends React.ComponentProps<'input'> {
+  label?: string
+}
 
-export function DatePicker({ ...props }: DatePickerProps) {
+export function DatePicker({ label, ...props }: DatePickerProps) {
   const today = format(new Date(), 'yyyy-MM-dd')
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -15,9 +17,11 @@ export function DatePicker({ ...props }: DatePickerProps) {
 
   return (
     <label onClick={showPicker} className="flex flex-col gap-2">
-      <Text as="label" variant="title-md" className="text-gray-200">
-        Data
-      </Text>
+      {label && (
+        <Text as="label" variant="title-md" className="text-gray-200">
+          Data
+        </Text>
+      )}
 
       <button
         type="button"

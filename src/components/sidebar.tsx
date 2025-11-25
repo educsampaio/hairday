@@ -36,7 +36,7 @@ export function Sidebar() {
 
       <form className="flex flex-col gap-6">
         <div className="flex flex-col gap-8">
-          <DatePicker />
+          <DatePicker label="Data" />
 
           <div className="flex flex-col gap-2">
             <Text variant="title-md" className="text-gray-200">
