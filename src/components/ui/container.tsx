@@ -4,7 +4,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 const containerVariants = cva('mx-auto flex flex-col md:flex-row', {
   variants: {
     size: {
-      md: 'max-w-360 px-3',
+      md: 'max-w-360 p-3',
     },
   },
   defaultVariants: {

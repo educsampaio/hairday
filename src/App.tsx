@@ -1,18 +1,15 @@
+import { Sidebar } from './components/sidebar'
 import { Container } from './components/ui/container'
-import { Text } from './components/ui/text'
+
+import logo from './assets/images/logo.svg'
 
 export function App() {
   return (
-    <Container as="main" className="gap-3">
-      <div className="space-y-1">
-        <Text as="h2" variant="title-lg" className="text-gray-100">
-          Agende um atendimento
-        </Text>
-        <Text>
-          Selecione data, horário e informe o nome do cliente para criar o
-          agendamento
-        </Text>
+    <Container as="main" className="gap-3 relative">
+      <div className="absolute top-0 left-0 bg-gray-600 px-5 py-3 rounded-br-xl">
+        <img src={logo} alt="HairDay" />
       </div>
+      <Sidebar />
     </Container>
   )
 }
