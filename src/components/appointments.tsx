@@ -1,9 +1,9 @@
 import { format } from 'date-fns'
 import { DatePicker } from './ui/date-picker'
 import { Text } from './ui/text'
-import { SchedulesCard } from './schedules-card'
+import { AppointmentsCard } from './appointments-card'
 
-export function Schedules() {
+export function Appointments() {
   const today = format(new Date(), 'yyyy-MM-dd')
 
   return (
@@ -22,9 +22,9 @@ export function Schedules() {
       </div>
 
       <div className="space-y-3">
-        <SchedulesCard period="morning" />
-        <SchedulesCard period="afternoon" />
-        <SchedulesCard period="evening" />
+        <AppointmentsCard period="morning" />
+        <AppointmentsCard period="afternoon" />
+        <AppointmentsCard period="evening" />
       </div>
     </div>
   )

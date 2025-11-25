@@ -8,11 +8,11 @@ import {
 import { ButtonIcon } from './ui/button-icon'
 import { Text } from './ui/text'
 
-interface SchedulesCardProps {
+interface AppointmentsCardProps {
   period: 'morning' | 'afternoon' | 'evening'
 }
 
-export function SchedulesCard({ period }: SchedulesCardProps) {
+export function AppointmentsCard({ period }: AppointmentsCardProps) {
   return (
     <div className="border border-solid border-gray-600 rounded-lg">
       <header className="flex items-center justify-between border-b border-solid border-gray-600 px-5 py-3">

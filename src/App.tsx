@@ -1,6 +1,6 @@
 import { Sidebar } from './components/sidebar'
 import { Container } from './components/ui/container'
-import { Schedules } from './components/schedules'
+import { Appointments } from './components/appointments'
 
 import logo from './assets/images/logo.svg'
 
@@ -11,7 +11,7 @@ export function App() {
         <img src={logo} alt="HairDay" />
       </div>
       <Sidebar />
-      <Schedules />
+      <Appointments />
     </Container>
   )
 }
