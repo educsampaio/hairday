@@ -1,6 +1,6 @@
 import { createContext, useState, type ReactNode } from 'react'
 
-interface Appointment {
+export interface Appointment {
   id: string
   client: string
   datetime: string
@@ -9,6 +9,7 @@ interface Appointment {
 interface AppointmentsContextType {
   appointments: Appointment[]
   addAppointment: (newAppointment: Appointment) => void
+  deleteAppointment: (appointmentToDeleteId: string) => void
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -21,11 +22,20 @@ export function AppointmentsProvider({ children }: { children: ReactNode }) {
     setAppointments([...appointments, newAppointment])
   }
 
+  function deleteAppointment(appointmentToDeleteId: string) {
+    setAppointments(
+      appointments.filter(
+        (appointment) => appointment.id !== appointmentToDeleteId
+      )
+    )
+  }
+
   return (
     <AppointmentsContext.Provider
       value={{
         appointments,
         addAppointment,
+        deleteAppointment,
       }}
     >
       {children}

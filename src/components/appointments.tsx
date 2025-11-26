@@ -1,7 +1,7 @@
-import { useContext, useState, type ChangeEvent } from 'react'
+import { useState, type ChangeEvent } from 'react'
 import { format } from 'date-fns'
 
-import { AppointmentsContext } from '../contexts/appointments-context'
+import { useAppointmentsContext } from '../hooks/use-appointments-context'
 
 import { DatePicker } from './ui/date-picker'
 import { Text } from './ui/text'
@@ -12,7 +12,7 @@ import { convertDatetime } from '../utils/convert-datetime'
 import { convertStringTimeToNumber } from '../utils/convert-string-time-to-number'
 
 export function Appointments() {
-  const { appointments } = useContext(AppointmentsContext)
+  const { appointments } = useAppointmentsContext()
 
   const today = format(new Date(), 'yyyy-MM-dd')
   const [selectedDate, setSelectedDate] = useState(today)
@@ -86,8 +86,7 @@ export function Appointments() {
           {morningAppointments.map((appointment) => (
             <AppointmentsCardItem
               key={appointment.id}
-              client={appointment.client}
-              appointmentDatetime={appointment.datetime}
+              appointment={appointment}
             />
           ))}
 
@@ -100,8 +99,7 @@ export function Appointments() {
           {afternoonAppointments.map((appointment) => (
             <AppointmentsCardItem
               key={appointment.id}
-              client={appointment.client}
-              appointmentDatetime={appointment.datetime}
+              appointment={appointment}
             />
           ))}
 
@@ -114,8 +112,7 @@ export function Appointments() {
           {eveningAppointments.map((appointment) => (
             <AppointmentsCardItem
               key={appointment.id}
-              client={appointment.client}
-              appointmentDatetime={appointment.datetime}
+              appointment={appointment}
             />
           ))}
 

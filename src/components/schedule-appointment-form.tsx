@@ -1,4 +1,4 @@
-import { useContext, useState, type ChangeEvent, type FormEvent } from 'react'
+import { useState, type ChangeEvent, type FormEvent } from 'react'
 import { parse } from 'date-fns'
 
 import { DatePicker } from './ui/date-picker'
@@ -8,8 +8,8 @@ import { Input } from './ui/input'
 import { Text } from './ui/text'
 
 import { UserSquareIcon } from '@phosphor-icons/react'
-import { AppointmentsContext } from '../contexts/appointments-context'
 import { convertDatetime } from '../utils/convert-datetime'
+import { useAppointmentsContext } from '../hooks/use-appointments-context'
 
 const hoursList = [
   {
@@ -27,7 +27,7 @@ const hoursList = [
 ]
 
 export function ScheduleAppointmentForm() {
-  const { appointments, addAppointment } = useContext(AppointmentsContext)
+  const { appointments, addAppointment } = useAppointmentsContext()
 
   const [selectedDate, setSelectedDate] = useState('')
   const [selectedTime, setSelectedTime] = useState('')
