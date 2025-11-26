@@ -1,18 +1,18 @@
+import type { ReactNode } from 'react'
 import {
   CloudSunIcon,
   MoonStarsIcon,
   SunHorizonIcon,
-  TrashIcon,
 } from '@phosphor-icons/react'
 
-import { ButtonIcon } from './ui/button-icon'
 import { Text } from './ui/text'
 
 interface AppointmentsCardProps {
   period: 'morning' | 'afternoon' | 'evening'
+  children: ReactNode
 }
 
-export function AppointmentsCard({ period }: AppointmentsCardProps) {
+export function AppointmentsCard({ period, children }: AppointmentsCardProps) {
   return (
     <div className="border border-solid border-gray-600 rounded-lg">
       <header className="flex items-center justify-between border-b border-solid border-gray-600 px-5 py-3">
@@ -42,17 +42,7 @@ export function AppointmentsCard({ period }: AppointmentsCardProps) {
         </Text>
       </header>
 
-      <div className="p-5">
-        <div className="flex items-center gap-5 py-1">
-          <Text variant="title-md" className="text-gray-200">
-            11:00
-          </Text>
-          <Text variant="text-md" className="flex-1 text-gray-200">
-            Ryan Dorwart
-          </Text>
-          <ButtonIcon icon={TrashIcon} />
-        </div>
-      </div>
+      <div className="p-5 space-y-0.5">{children}</div>
     </div>
   )
 }

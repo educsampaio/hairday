@@ -1,6 +1,5 @@
-import { useState, type ChangeEvent, type FormEvent } from 'react'
-import { format, parse, parseISO } from 'date-fns'
-import { useAppointments } from '../hooks/useAppointments'
+import { useContext, useState, type ChangeEvent, type FormEvent } from 'react'
+import { parse } from 'date-fns'
 
 import { DatePicker } from './ui/date-picker'
 import { Button } from './ui/button'
@@ -9,6 +8,8 @@ import { Input } from './ui/input'
 import { Text } from './ui/text'
 
 import { UserSquareIcon } from '@phosphor-icons/react'
+import { AppointmentsContext } from '../contexts/appointments-context'
+import { convertDatetime } from '../utils/convert-datetime'
 
 const hoursList = [
   {
@@ -26,7 +27,7 @@ const hoursList = [
 ]
 
 export function ScheduleAppointmentForm() {
-  const { appointments, addAppointment } = useAppointments()
+  const { appointments, addAppointment } = useContext(AppointmentsContext)
 
   const [selectedDate, setSelectedDate] = useState('')
   const [selectedTime, setSelectedTime] = useState('')
@@ -36,10 +37,9 @@ export function ScheduleAppointmentForm() {
 
   function isUnavaliableHour(hour: string) {
     return appointments.some((appointment) => {
-      const datetimeObject = parseISO(appointment.datetime)
-
-      const appointmentDate = format(datetimeObject, 'yyyy-MM-dd')
-      const appointmentTime = format(datetimeObject, 'HH:mm')
+      const { appointmentDate, appointmentTime } = convertDatetime(
+        appointment.datetime
+      )
 
       return appointmentDate === selectedDate && appointmentTime === hour
     })
