@@ -1,10 +1,6 @@
-import { createContext, useState, type ReactNode } from 'react'
-
-export interface Appointment {
-  id: string
-  client: string
-  datetime: string
-}
+import { createContext, type ReactNode } from 'react'
+import { APPOINTMENT_KEY, type Appointment } from '../models/appointment'
+import useLocalStorageState from 'use-local-storage-state'
 
 interface AppointmentsContextType {
   appointments: Appointment[]
@@ -16,7 +12,10 @@ interface AppointmentsContextType {
 export const AppointmentsContext = createContext({} as AppointmentsContextType)
 
 export function AppointmentsProvider({ children }: { children: ReactNode }) {
-  const [appointments, setAppointments] = useState<Appointment[]>([])
+  const [appointments, setAppointments] = useLocalStorageState<Appointment[]>(
+    APPOINTMENT_KEY,
+    { defaultValue: [] }
+  )
 
   function addAppointment(newAppointment: Appointment) {
     setAppointments([...appointments, newAppointment])

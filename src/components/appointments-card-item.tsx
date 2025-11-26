@@ -5,8 +5,8 @@ import { TrashIcon } from '@phosphor-icons/react'
 import { ButtonIcon } from './ui/button-icon'
 import { convertDatetime } from '../utils/convert-datetime'
 
-import type { Appointment } from '../contexts/appointments-context'
 import { useAppointmentsContext } from '../hooks/use-appointments-context'
+import type { Appointment } from '../models/appointment'
 
 interface AppointmentsCardItemProps {
   appointment: Appointment
